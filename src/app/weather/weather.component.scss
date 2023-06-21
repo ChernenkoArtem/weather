@@ -1,0 +1,45 @@
+.weather-container {
+  .weather-card {
+    min-width: 20%;
+    max-width: 60%;
+    color: #fff;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    -webkit-tap-highlight-color: transparent;
+
+    .mat-mdc-card-header {
+      justify-content: space-between;
+      padding: 0;
+      .mat-mdc-card-subtitle {
+        color: #fff;
+      }
+
+      .mat-mdc-select {
+        width: 40px;
+        ::ng-deep .mat-mdc-select-value {
+          color: #fff;
+        }
+      }
+    }
+
+    .condition-group {
+      display: flex;
+      justify-content: space-between;
+
+      .condition {
+        width: 100px;
+
+        .title {
+          font-size: 12px;
+          font-weight: normal;
+          line-height: 16px;
+        }
+        p {
+          font-size: 16px;
+          line-height: 22px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

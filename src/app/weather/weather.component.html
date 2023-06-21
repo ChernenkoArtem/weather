@@ -1,0 +1,64 @@
+<div class="weather-container">
+  <div class="selector">
+    <mat-form-field>
+      <mat-label>Choose city</mat-label>
+      <mat-select [(ngModel)]="selectValue">
+        <mat-option *ngFor="let city of cities" [value]="city">
+          {{ city }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-card class="weather-card" *ngIf="weatherData">
+    <mat-card-header>
+      <mat-card-subtitle class="location-name">
+        {{ weatherData.location.name }}, {{ weatherData.location.country }}
+      </mat-card-subtitle>
+      <mat-select [(ngModel)]="selectType">
+        <mat-option *ngFor="let type of tempTypes" [value]="type.value">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+    </mat-card-header>
+    <mat-card-title-group>
+      <img mat-card-sm-image [src]="weatherData.current.condition.icon" />
+      <mat-card-title>{{
+        selectType === "C"
+          ? weatherData.current.temp_c + "°C"
+          : weatherData.current.temp_f + "°F"
+      }}</mat-card-title>
+      <mat-card-title>{{ weatherData.current.condition.text }}</mat-card-title>
+    </mat-card-title-group>
+    <div class="condition-group">
+      <div class="condition">
+        <div class="title">Wind</div>
+        <p>
+          {{
+            selectType === "C"
+              ? weatherData.current.wind_kph + "kph"
+              : weatherData.current.wind_mph + "mph"
+          }}
+        </p>
+      </div>
+      <div class="condition">
+        <div class="title">Humidity</div>
+        <p>{{ weatherData.current.humidity }}</p>
+      </div>
+      <div class="condition">
+        <div class="title">Visibility</div>
+        <p>{{ weatherData.current.vis_km }}</p>
+      </div>
+      <div class="condition">
+        <div class="title">Pressure</div>
+        <p>
+          {{
+            selectType === "C"
+              ? weatherData.current.pressure_mb + "mb"
+              : weatherData.current.pressure_in + "inch"
+          }}
+        </p>
+      </div>
+    </div>
+  </mat-card>
+</div>
